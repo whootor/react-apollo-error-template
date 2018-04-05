@@ -7,19 +7,20 @@
     "react-scripts": "1.1.2"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.0.0",
-    "apollo-client": "^2.0.1",
-    "apollo-link": "^1.0.0",
+    "apollo-cache-inmemory": "^1.1.12",
+    "apollo-client": "^2.2.8",
+    "apollo-link": "^1.2.1",
     "graphql": "^0.13.2",
-    "graphql-tag": "^2.5.0",
-    "react": "^16.0.0",
+    "graphql-tag": "^2.8.0",
+    "react": "^16.3.1",
     "react-apollo": "2.1.2",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "deploy": "PUBLIC_URL=/react-apollo-error-template/$(git symbolic-ref --short HEAD) npm run build && gh-pages-clean && gh-pages -d build --dest $(git symbolic-ref --short HEAD) --remote"
+    "deploy":
+      "PUBLIC_URL=/react-apollo-error-template/$(git symbolic-ref --short HEAD) npm run build && gh-pages-clean && gh-pages -d build --dest $(git symbolic-ref --short HEAD) --remote"
   }
 }
