@@ -13,6 +13,7 @@ class MountedQuery extends Component {
         ) : (
           <ul>
             <li key={personFast.id}>{personFast.name} [Nick: {personFast.nick}]</li>
+            {/* <button onClick={() => this.moodate()}>BUTTon</button> */}
           </ul>
         )}    
       </div>

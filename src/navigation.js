@@ -12,7 +12,10 @@ class Navigation
           checked={underfetch}
           onChange={e => this.setState({underfetch: e.target.checked})} 
         />
-        <a href={`/mutate-optimistic${underfetch ? '?underfetch': ''}`}>Example 1</a>
+        <a href={`/mutate-optimistic${underfetch ? '?underfetch': ''}`}>
+          Example 1: Mutation with optimistic result arrives after query result, 
+            crashes if underfetched, at query response arrival
+        </a>
       </div>
     )
   }

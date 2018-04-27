@@ -7,10 +7,10 @@ class MutateOptimistic extends Component {
     setTimeout(() => this.props.mutate({
       optimisticResponse: {
         __typename: 'Mutation',
-        updateFast: {
+        updateSlow: {
           id: 1,
           name: 'John Doe (Optimist)',
-          // nick: window.location.search !== '?underfetch' ? 'Nick the optimist' : undefined,
+          nick: window.location.search !== '?underfetch' ? 'Nick the optimist' : undefined,
           __typename: 'Person'
         }
       }
@@ -33,13 +33,14 @@ class MutateOptimistic extends Component {
     )
   }
 }
+
 const one = graphql(
   gql`
     mutation ErrorTemplate {
-      updateFast {
+      updateSlow {
         id
         name
-        # ${window.location.search !== '?underfetch' ? 'nick' : ''}
+        ${window.location.search !== '?underfetch' ? 'nick' : ''}
       }
     }
   `

@@ -10,7 +10,7 @@ class App extends Component {
   componentDidMount () {
     setTimeout(() => this.setState({
       mountExample: true
-    }), 400)
+    }), 100)
   }
   render() {
     const example = window.location.pathname
