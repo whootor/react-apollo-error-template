@@ -4,6 +4,7 @@ import { schema } from "./schema";
 
 export const link = new ApolloLink(operation => {
   return new Observable(observer => {
+    console.log('GQL Operation', operation)
     const { query, operationName, variables } = operation;
     delay(300)
       .then(() =>

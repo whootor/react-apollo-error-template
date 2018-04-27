@@ -11,23 +11,67 @@ const PersonType = new GraphQLObjectType({
   fields: {
     id: { type: GraphQLID },
     name: { type: GraphQLString },
+    nick: { type: GraphQLString },
   },
 });
-
-const peopleData = [
-  { id: 1, name: 'John Smith' },
-  { id: 2, name: 'Sara Smith' },
-  { id: 3, name: 'Budd Deey' },
-];
 
 const QueryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    people: {
-      type: new GraphQLList(PersonType),
-      resolve: () => peopleData,
+    personFast: {
+      type: PersonType,
+      resolve: async () => {
+        // qawait new Promise((resolve) => setTimeout(resolve, 1000))
+        return {
+          id: 1,
+          nick: 'JD',
+          name: 'John Doe (Fast)'
+        }
+      },
+    },
+    personSlow: {
+      type: PersonType,
+      resolve: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 3000))
+        return {
+          id: 1,
+          nick: 'JD',
+          name: 'John Doe (Slow)'
+        }
+      },
     },
   },
 });
 
-export const schema = new GraphQLSchema({ query: QueryType });
+const MutationType = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    updateFast: {
+      type: PersonType,
+      resolve: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 500))
+        return {
+          id: 1,
+          nick: 'JD',
+          name: 'John Doe (Mutated Fast)'
+        }
+      },
+    },
+    updateSlow: {
+      type: PersonType,
+      resolve: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 3000))
+        return {
+          id: 1,
+          nick: 'JD',
+          name: 'John Doe (Mutated Slow)'
+        }
+      },
+    },
+  },
+});
+
+export const schema = new GraphQLSchema({ 
+  query: QueryType,
+  mutation: MutationType
+});
