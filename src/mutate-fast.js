@@ -2,26 +2,16 @@ import React, { Component } from 'react'
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-class MutateOptimistic extends Component {
+class MutateFast extends Component {
   componentDidMount () {
-    setTimeout(() => this.props.mutate({
-      optimisticResponse: {
-        __typename: 'Mutation',
-        updateSlow: {
-          id: 1,
-          name: 'John Doe (Optimist)',
-          nick: window.location.search !== '?underfetch' ? 'Nick the optimist' : undefined,
-          __typename: 'Person'
-        }
-      }
-    }), 250)
+    setTimeout(() => this.props.mutate(), 250)
   }
 
   render () {
     const { loading, personSlow } = this.props.data
     return (
       <div>
-        Example 1: Mutation with Optimistic Response
+        Example 2: Mutation without optimistic result arrives before query result, works if underfetched, at query response arrival
         {loading ? (
           <p>Loading…</p>
         ) : (
@@ -37,14 +27,14 @@ class MutateOptimistic extends Component {
 const one = graphql(
   gql`
     mutation ErrorTemplate {
-      updateSlow {
+      updateFast {
         id
         name
         ${window.location.search !== '?underfetch' ? 'nick' : ''}
       }
     }
   `
-)(MutateOptimistic)
+)(MutateFast)
 
 export default graphql(
   gql`

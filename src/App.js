@@ -1,7 +1,21 @@
 import React, { Component } from "react";
 import MountedQuery from './mounted'
-import MutateOptimistic from './mutate-optimistic'
+import MutateSlowOptimistic from './mutate-slow-optimistic'
+import MutateFast from './mutate-fast'
+import MutateFastOptimistic from './mutate-fast-optimistic'
 import Navigation from './navigation'
+
+function getExample () {
+  const example = window.location.pathname
+  switch (example) {
+    case '/mutate-slow-optimistic':
+      return MutateSlowOptimistic
+    case '/mutate-fast':
+      return MutateFast
+    case '/mutate-fast-optimistic':
+      return MutateFastOptimistic
+  }
+}
 
 class App extends Component {
   state = {
@@ -14,14 +28,8 @@ class App extends Component {
   }
   render() {
     const example = window.location.pathname
-    const underfetch = window.location.search === '?underfetch'
 
-    let Example = null
-    switch (example) {
-      case '/mutate-optimistic':
-        Example = MutateOptimistic
-        break;
-    }
+    let Example = getExample()
 
     if (!Example) {
       return <Navigation />
@@ -30,7 +38,7 @@ class App extends Component {
     return (
       <main>
         <Navigation />
-        <MountedQuery />    
+        <MountedQuery />
         {this.state.mountExample && <Example />}
       </main>
     );
