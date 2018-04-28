@@ -15,7 +15,7 @@ class Navigation
         <ul>
         <li><a href={`/mutate-slow-optimistic${underfetch ? '?underfetch': ''}`}>
           Example 1: Mutation with optimistic result arrives after query result, 
-            crashes if underfetched, at query response arrival
+            CRASHES if underfetched, at query response arrival
         </a></li>
         <li><a href={`/mutate-fast${underfetch ? '?underfetch': ''}`}>
           Example 2: Mutation without optimistic result arrives before query result, 
@@ -23,6 +23,10 @@ class Navigation
         </a></li>
         <li><a href={`/mutate-fast-optimistic${underfetch ? '?underfetch': ''}`}>
           Example 3: Mutation with optimistic result arrives before query result,
+            works if underfetched, at query response arrival
+        </a></li>
+        <li><a href={`/mutate-slow${underfetch ? '?underfetch': ''}`}>
+          Example 4: Mutation without optimistic result arrives after query result,
             works if underfetched, at query response arrival
         </a></li>
         </ul>

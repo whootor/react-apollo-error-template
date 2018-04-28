@@ -7,16 +7,7 @@ class MountedQuery extends Component {
     console.log('dfsdf', this.props)
     const { data: { loading, personFast } } = this.props;
     return (
-      <div>
-        {loading ? (
-          <p>Loading…</p>
-        ) : (
-          <ul>
-            <li key={personFast.id}>{personFast.name} [Nick: {personFast.nick}]</li>
-            {/* <button onClick={() => this.moodate()}>BUTTon</button> */}
-          </ul>
-        )}    
-      </div>
+      <pre>{JSON.stringify({loading, personFast}, null, 2)}</pre>
     )
   }
 }

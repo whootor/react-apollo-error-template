@@ -60,7 +60,7 @@ const MutationType = new GraphQLObjectType({
     updateSlow: {
       type: PersonType,
       resolve: async () => {
-        await new Promise((resolve) => setTimeout(resolve, 3000))
+        await new Promise((resolve) => setTimeout(resolve, 5000))
         return {
           id: 1,
           nick: 'JD',

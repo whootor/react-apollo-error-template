@@ -3,6 +3,7 @@ import MountedQuery from './mounted'
 import MutateSlowOptimistic from './mutate-slow-optimistic'
 import MutateFast from './mutate-fast'
 import MutateFastOptimistic from './mutate-fast-optimistic'
+import MutateSlow from './mutate-slow'
 import Navigation from './navigation'
 
 function getExample () {
@@ -14,6 +15,8 @@ function getExample () {
       return MutateFast
     case '/mutate-fast-optimistic':
       return MutateFastOptimistic
+    case '/mutate-slow':
+      return MutateSlow
   }
 }
 
@@ -24,7 +27,7 @@ class App extends Component {
   componentDidMount () {
     setTimeout(() => this.setState({
       mountExample: true
-    }), 100)
+    }), 2000)
   }
   render() {
     const example = window.location.pathname
