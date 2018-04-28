@@ -3,7 +3,6 @@ import {
   GraphQLObjectType,
   GraphQLID,
   GraphQLString,
-  GraphQLList,
 } from 'graphql';
 
 const PersonType = new GraphQLObjectType({

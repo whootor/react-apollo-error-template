@@ -17,6 +17,8 @@ function getExample () {
       return MutateFastOptimistic
     case '/mutate-slow':
       return MutateSlow
+    default:
+      return undefined
   }
 }
 
@@ -30,8 +32,6 @@ class App extends Component {
     }), 2000)
   }
   render() {
-    const example = window.location.pathname
-
     let Example = getExample()
 
     if (!Example) {

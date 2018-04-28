@@ -6,7 +6,7 @@ import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-import { createHttpLink } from 'apollo-link-http'
+// import { createHttpLink } from 'apollo-link-http'
 import { link } from './graphql/link'
 import App from "./App";
 
