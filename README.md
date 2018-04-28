@@ -1,3 +1,21 @@
+# Underfetched Optimistic Response causing empty data re-renders for mounted queries
+
+![Example 1](./src/public/apollo_optimistic_cache.gif)
+
+**Example 1**
+  1. An initial component with an underfetched query is mounted, fetched and rendered
+  2. A second component with a fully fetched query is mounted delayed
+  3. Shortly after the fully fetched query is mounted, an underfetched mutation is triggered
+  4. The mutation triggers an optimistic response which is stored in the cache (the initial component shows the optimistic response)
+  5. The fully fetched query response comes in and updates the second component with `loading=false` and no data
+  6. The mutation response comes in and updates both components, the second one with the actually merged data of the full query and the underfetched mutation response.
+
+At `5.` we expect _one of two behaviours_:
+  1. the second component to not be updated at all, only when the final merged result comes in (stays in loading state)
+  2. the second component is updated with a merged result of the optimistic response and the full query result
+
+
+
 # Apollo Client Error Template
 
 Welcome! If you are here then you were likely referred to this repo when reporting an error to [`apollographql/apollo-client`][1]. The core team is invested in making the best client for GraphQL possible, so when you hit an error it is important to the team that the error is resolved as soon as possible.
