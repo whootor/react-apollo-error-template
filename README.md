@@ -1,6 +1,6 @@
 # Underfetched Optimistic Response causing empty data re-renders for mounted queries
 
-![Example 1](./src/public/apollo_optimistic_cache.gif)
+![Example 1](./public/apollo_optimistic_cache.gif)
 
 **Example 1**
   1. An initial component with an underfetched query is mounted, fetched and rendered
